@@ -1,0 +1,23 @@
+candidates = ['candidate1', 'candidate2', 'candidate3']
+votes = {candidate: 0 for candidate in candidates}
+
+def vote(candidate):
+    votes[candidate] += 1
+    print(f"Your vote for {candidate} has been registered.")
+
+while True:
+    print("Enter the number of the candidate you want to vote for:")
+    for i, candidate in enumerate(candidates):
+        print(f"{i + 1}. {candidate}")
+    print("0. Quit")
+    choice = int(input())
+    if choice == 0:
+        break
+    if choice > len(candidates):
+        print("Invalid choice. Try again.")
+        continue
+    vote(candidates[choice - 1])
+
+print("Election results:")
+for candidate, votes in votes.items():
+    print(f"{candidate}: {votes} votes")
